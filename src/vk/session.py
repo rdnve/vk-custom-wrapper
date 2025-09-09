@@ -54,9 +54,14 @@ class APIBase:
 
         if 'response' in response_or_error:
 
+            errors = []
             for error_data in response_or_error.get('execute_errors', ()):
                 api_error = VkAPIError(error_data)
                 logger.warning('Execute "%s" error: %s', api_error.method, api_error)
+                errors.append(api_error)
+
+            if len(errors) > 0:
+                raise errors[0]
 
             return response_or_error['response']
 
