@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 class APIBase:
     METHOD_COMMON_PARAMS = {'v', 'lang', 'https', 'test_mode'}
 
-    API_URL = 'https://api.vk.com/method/'
+    API_URL = 'https://api.vk.ru/method/'
 
     def __new__(cls, *args, **kwargs):
         method_common_params = {
